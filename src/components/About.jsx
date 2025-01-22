@@ -2,28 +2,26 @@ import React, { useState, useEffect, forwardRef } from "react";
 import sid from "../assets/sid.jpg";
 import IconCloud from "@components/components/ui/icon-cloud";
 import "./About.css";
+import citi from "../assets/citi-logo.png";
+import spenza from "../assets/spenza-logo.png";
+import { frame } from "framer-motion";
 
 const About = forwardRef((props, ref) => {
-  const slugs = [
+  const initialSlugs = [
     "typescript",
     "javascript",
     "java",
     "react",
-    "android",
     "html5",
     "css3",
     "nodedotjs",
     "express",
     "amazonaws",
-    "postgresql",
     "firebase",
-    "nginx",
-    "vercel",
     "docker",
     "git",
     "jira",
     "github",
-    "gitlab",
     "visualstudiocode",
     "androidstudio",
     "figma",
@@ -43,12 +41,17 @@ const About = forwardRef((props, ref) => {
     "postman",
   ];
 
+  const [slugs, setSlugs] = useState(initialSlugs);
+
   return (
     <div className="about">
       <div className="box box1" ref={ref}>
         <p className="box1-text">
-          I am a web developer, fervently devoted to crafting elegant,
-          responsive, and user focused websites.
+          I'm a web developer from Chennai with a knack for building{" "}
+          <span className="aesthetic">aesthetic</span> and{" "}
+          <span className="aesthetic">click-worthy</span> websites that combine
+          code with creative design. I love turning ideas into visually stunning
+          experiences.
         </p>
       </div>
 
@@ -64,7 +67,9 @@ const About = forwardRef((props, ref) => {
 
         <div className="items">
           <div className="item">
-            <div className="companyName">CITI</div>
+            <div className="companyName">
+              <img src={citi} alt="citi" />
+            </div>
             <div className="companyContent">
               <div className="duration">6 MONTHS</div>
               <div className="timeline">JUL 2024 - PRESENT</div>
@@ -72,7 +77,9 @@ const About = forwardRef((props, ref) => {
           </div>
 
           <div className="item">
-            <div className="companyName">SPENZA</div>
+            <div className="companyName">
+              <img src={spenza} alt="spenza" />
+            </div>
             <div className="companyContent">
               <div className="duration">6 MONTHS</div>
               <div className="timeline">FEB 2024 - JUL 2024</div>
@@ -80,7 +87,9 @@ const About = forwardRef((props, ref) => {
           </div>
 
           <div className="item item-last">
-            <div className="companyName">CITI</div>
+            <div className="companyName">
+              <img src={citi} alt="citi" />
+            </div>
             <div className="companyContent">
               <div className="duration">2 MONTHS</div>
               <div className="timeline">JUN 2023 - AUG 2023</div>
@@ -88,16 +97,43 @@ const About = forwardRef((props, ref) => {
           </div>
         </div>
       </div>
+
       <div className="box box4">
-        <div className="box4-text">LinkedIn</div>
-        <div className="box4-text">Github</div>
-        <div className="box4-text">Mail</div>
+        <div className="box4-text">
+          <a
+            href="https://www.linkedin.com/in/siddharth-s-59b600256/"
+            target="_blank"
+          >
+            <img src="https://skillicons.dev/icons?i=linkedin" />
+          </a>
+        </div>
+        <div className="box4-text">
+          <a href="https://github.com/Sid-0307" target="_blank">
+            <img src="https://skillicons.dev/icons?i=github" />
+          </a>
+        </div>
+        <a
+          href="mailto:siddharthshankar03@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div className="box4-text">
+            <img src="https://skillicons.dev/icons?i=gmail" alt="Gmail Icon" />
+          </div>
+        </a>
       </div>
       <div className="box box5">
         <p className="box5-text">FULL STACK DEVELOPER</p>
       </div>
-      <div className="box6 box">
-        <div className="box6-text">Resume</div>
+      <div className="box box6">
+        <a
+          href="https://drive.google.com/file/d/1SutHvv_03Q0D3SYYAU24-D3n1n9OYH3z/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="box6-text"
+        >
+          Resume
+        </a>
       </div>
     </div>
   );

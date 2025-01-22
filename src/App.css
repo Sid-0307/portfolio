@@ -4,3 +4,12 @@
   width: 100vw;
   min-height: 100vh;
 }
+
+.footer {
+  text-align: center;
+  margin: 0rem 1rem;
+  color: var(--peach-puff);
+  padding: 10px 0;
+  font-size: 14px;
+  bottom: 0;
+}

@@ -2,32 +2,29 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  /* background-color: var(--dark-teal); */
   color: var(--peach-puff);
-  margin: 1rem;
-  padding: 1rem;
+  margin: 1rem 1rem 0rem 1rem;
+  padding: 1rem 1rem 0rem 1rem;
   height: 90vh;
   width: 97%;
   border-radius: 10px;
   z-index: 0;
   background-image: linear-gradient(to right, #023636 1px, transparent 1px),
-    linear-gradient(to bottom, #023636 1px, transparent 1px);
+    linear-gradient(to bottom, black 1px, transparent 1px);
   background-size: 40px 40px;
   animation: noiseMove 4s alternate infinite;
   transform: perspective(10000px) rotateX(15deg) rotateY(-15deg);
-  /* border: 5px solid var(--dark-teal);   */
   transform-style: preserve-3d;
-  /* transform: perspective(10000px) rotateX(-15deg) rotateY(15deg);
-  transform-style: preserve-3d; */
+}
+
+.skills {
+  margin: 1rem;
 }
 
 .skills-text {
   font-size: 5rem;
   position: absolute;
   color: #046f6f;
-  /* background: linear-gradient(var(--peach-puff), black);
-  -webkit-background-clip: text;
-  color: transparent; */
 }
 
 @keyframes noiseMove {

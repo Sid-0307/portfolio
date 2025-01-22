@@ -52,6 +52,7 @@ export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
       href: undefined,
       target: undefined,
       rel: undefined,
+      title: icon.slug,
       onClick: (e: any) => e.preventDefault(),
     },
   });

@@ -1,13 +1,17 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import About from "./components/About";
 import Project from "./components/Project";
 import Skill from "./components/Skill";
-import Contact from "@components/Contact";
+import Contact from "./components/Contact";
+import Loading from "@components/Loading";
 
 function App() {
   const aboutRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [shouldRender, setShouldRender] = useState(false);
+
   const projectRef = useRef(null);
   const skillRef = useRef(null);
   const contactRef = useRef(null);
@@ -28,18 +32,59 @@ function App() {
     contactRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  useEffect(() => {
+    const content = (
+      <div className="app" style={{ display: "none" }}>
+        <Navbar
+          onAboutClick={scrollToAbout}
+          onProjectClick={scrollToProjects}
+          onSkillClick={scrollToSkill}
+          onContactClick={scrollToContact}
+        />
+        <About ref={aboutRef} />
+        <Project ref={projectRef} />
+        <Skill ref={skillRef} />
+        <Contact ref={contactRef} />
+        <footer className="footer">
+          <p>Built by Sid ©️ 2025</p>
+        </footer>
+      </div>
+    );
+
+    setShouldRender(true);
+
+    const loadingTime = 5000;
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, loadingTime);
+  }, []);
+
   return (
-    <div className="app">
-      <Navbar
-        onAboutClick={scrollToAbout}
-        onProjectClick={scrollToProjects}
-        onSkillClick={scrollToSkill}
-      />
-      <About ref={aboutRef} />
-      <Project ref={projectRef} />
-      <Contact ref={contactRef} />
-      {/* <Skill ref={skillRef} /> */}
-    </div>
+    <>
+      {isLoading && <Loading />}
+      {shouldRender && (
+        <div
+          className="app"
+          style={{ visibility: isLoading ? "hidden" : "visible" }}
+        >
+          <Navbar
+            onAboutClick={scrollToAbout}
+            onProjectClick={scrollToProjects}
+            onSkillClick={scrollToSkill}
+            onContactClick={scrollToContact}
+          />
+          <About ref={aboutRef} />
+          <Project ref={projectRef} />
+          <Skill ref={skillRef} />
+
+          <Contact ref={contactRef} />
+          <footer class="footer">
+            <p>Built by Sid ©️ 2025</p>
+          </footer>
+        </div>
+      )}
+    </>
   );
 }
 

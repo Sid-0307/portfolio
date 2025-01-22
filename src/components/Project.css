@@ -6,19 +6,42 @@
   align-items: center;
   padding: 1rem;
   overflow: hidden;
-  border: 2px solid var(--peach-puff);
+  position: relative;
+  overflow: hidden;
   background-color: black;
+  border: 2px solid var(--peach-puff);
   color: var(--peach-puff);
   margin: 1rem;
   border-radius: 10px;
   animation: noiseMove 4s alternate infinite;
-  margin: 1rem;
-  border-radius: 10px;
   background-image: linear-gradient(to right, #ddbfa037 1px, transparent 1px),
     linear-gradient(to bottom, #ddbfa037 1px, transparent 1px);
   background-size: 40px 40px;
-  /* transform: perspective(10000px) rotateX(15deg) rotateY(15deg); */
+  perspective: 1000px;
   transform-style: preserve-3d;
+  position: relative;
+}
+
+@keyframes gridRipple {
+  0% {
+    background-size: 40px 40px;
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    background-size: 45px 45px;
+    transform: scale(1.01);
+    opacity: 0.8;
+  }
+  100% {
+    background-size: 40px 40px;
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.ripple-grid {
+  animation: gridRipple 0.5s ease-in-out forwards;
 }
 
 @keyframes noiseMove {
@@ -49,7 +72,7 @@
   align-items: center;
   overflow: hidden;
   position: relative;
-  /* margin: 1rem; */
+  margin: 0rem 1rem;
   border-radius: 10px;
   width: 100%;
   height: 100%;
@@ -60,19 +83,22 @@
   transition: transform 0.5s ease, opacity 0.5s ease;
   width: 500px;
   height: 300px;
-  background-color: black;
+  background-color: rgba(30, 30, 30, 0);
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
 }
 
 .project-content-item img {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
-  object-fit: cover;
-  box-shadow: 2px 2px 5px black;
+  object-fit: fill;
+}
+
+.project-content-item img:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+  transition: transform 0.2s;
 }
 
 .project-carousel-button {
@@ -80,7 +106,7 @@
   top: 50%;
   transform: translateY(-50%);
   background-color: black;
-  border: none;
+  border: 2px solid var(--peach-puff);
   padding: 10px 15px;
   cursor: pointer;
   border-radius: 50%;
@@ -117,11 +143,6 @@
   transition: all 0.3s ease;
 }
 
-/* .project-details:hover {
-  background: rgba(0, 252, 193, 0.2);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-} */
-
 .project-content-name {
   font-size: 1.5rem;
   display: flex;
@@ -135,5 +156,7 @@
 
 .project-content-desc-text {
   margin-top: 1rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }

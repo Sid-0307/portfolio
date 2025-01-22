@@ -1,6 +1,14 @@
 import React, { useState, forwardRef } from "react";
 import "./Project.css";
 import project from "../assets/project.png";
+import stock from "../assets/stock.png";
+import snake from "../assets/snake.png";
+import rems from "../assets/rems.png";
+import movie from "../assets/movie.png";
+import dockify from "../assets/dockify.png";
+import access from "../assets/access.png";
+import vizalpay from "../assets/vizalpay.png";
+import dqr from "../assets/dqr.png";
 
 const Project = forwardRef((props, ref) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -14,24 +22,60 @@ const Project = forwardRef((props, ref) => {
   };
 
   const [activeIndex, setActiveIndex] = useState(0);
-  const projects = [project, project, project, project, project];
+  const projects = [stock, dockify, dqr, movie, rems, vizalpay, access, snake];
   const projectNames = [
+    "Stock Portfolio Management",
+    "Dockify",
+    "Digital QR",
+    "Movies4U",
     "Real Estate Management",
-    "Project 2",
-    "Project 3",
-    "Project 4",
-    "Project 5",
+    "VizalPay",
+    "Access Management System",
+    "Evil Snake",
   ];
 
   const projectDesc = [
-    "A web application that streamlines property listings and client interactions using user friendly interfaces and database management",
-    "Project 2",
-    "Project 3",
-    "Project 4",
-    "Project 5",
+    "A dynamic stock management app where users can buy, sell, and track stocks effortlessly. It offers real-time stock value updates, detailed transaction records, and a discovery section to explore new opportunities — all wrapped in an intuitive, user-friendly design.",
+    "Dockify is an AI-powered documentation tool that generates markdown files from a repository URL or zip file. It streamlines the process of creating technical documentation, ensuring clear, organized, and developer-friendly outputs for any project.",
+    "A dynamic QR code generator that allows users to upload images and embed location tags. The tool creates scannable QR codes for quick access, making it ideal for sharing location-based content.",
+    "A movie browsing platform where users can explore films or search them by genre or text. It offers a smooth interface for discovering movie details and allows easy navigation through a wide variety of films.",
+    "A web-based platform for listing, buying, and selling properties. Users can explore detailed property listings and manage their own, offering a simple and efficient way to navigate the real estate market.",
+    "A payment app prototype designed with dummy cash to simulate digital transactions. Users can send and receive funds within the app and view detailed transaction histories of the transactions.",
+    "An access management system designed for user authentication and role-based access control. It enables secure logins, efficient permission management in web applications.",
+    "A wicked twist on the classic Snake game where you control the apple instead of the snake. Dodge the relentless snake as it hunts you down, challenging your reflexes and strategy in a fun, fast-paced survival game.",
+  ];
+
+  const skillsImage = [
+    "https://skillicons.dev/icons?i=javascript,css,react,java,spring,mysql",
+    "https://skillicons.dev/icons?i=html,css,javascript,python,fastapi,ai",
+    "https://skillicons.dev/icons?i=figma,java,androidstudio,gradle,firebase",
+    "https://skillicons.dev/icons?i=react,css,javascript,nodejs,express,mongodb",
+    "https://skillicons.dev/icons?i=html,css,javascript,java,jquery,mysql",
+    "https://skillicons.dev/icons?i=figma,java,androidstudio,gradle,sqlite",
+    "https://skillicons.dev/icons?i=html,css,javascript,nodejs,mongodb",
+    "https://skillicons.dev/icons?i=java,replit,bash",
+  ];
+
+  const links = [
+    "https://github.com/Sid-0307/Stock-Portfolio-Handler",
+    "https://github.com/Sid-0307/Dockify",
+    "https://github.com/Sid-0307/DigitalQR",
+    "https://github.com/Sid-0307/MovieBrowser",
+    "https://github.com/Sid-0307/RealEstate-Management-System",
+    "https://github.com/Sid-0307/VizalPay",
+    "https://github.com/Sid-0307/Access-Management-System",
+    "https://github.com/Sid-0307/EvilSnake",
   ];
 
   const carouselEffect = (direction) => {
+    const projectElement = document.querySelector(".project");
+    projectElement.classList.remove("ripple-grid");
+    void projectElement.offsetWidth;
+    projectElement.classList.add("ripple-grid");
+
+    setTimeout(() => {
+      projectElement.classList.remove("ripple-grid");
+    }, 500);
     if (direction === "left" && activeIndex > 0) {
       setActiveIndex((prev) => prev - 1);
     } else if (direction === "right" && activeIndex < projects.length - 1) {
@@ -67,7 +111,13 @@ const Project = forwardRef((props, ref) => {
                   filter: `blur(${Math.min(Math.abs(offset) * 2, 5)}px)`,
                 }}
               >
-                <img src={img} alt={`project ${index + 1}`} />
+                <img
+                  src={img}
+                  alt={`project ${index + 1}`}
+                  onClick={() => {
+                    window.open(links[index], "_blank");
+                  }}
+                />
               </div>
             );
           })}
@@ -85,15 +135,13 @@ const Project = forwardRef((props, ref) => {
           <h2 className="project-content-name-text">
             {projectNames[activeIndex]}{" "}
           </h2>
-          <img src="https://skillicons.dev/icons?i=c,cpp,python&perline=3" />
+          <img src={skillsImage[activeIndex]} />
         </div>
         <div className="project-content-name">
           <h5 className="project-content-desc-text">
             {projectDesc[activeIndex]}
           </h5>
-          {/* <img src="https://skillicons.dev/icons?i=github" /> */}
         </div>
-        <span>Code</span> <span>Demo</span>
       </div>
     </div>
   );

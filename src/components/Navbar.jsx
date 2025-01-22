@@ -1,7 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Navbar.css";
 
-const Navbar = ({ onAboutClick, onProjectClick, onSkillClick }) => {
+const Navbar = ({
+  onAboutClick,
+  onProjectClick,
+  onSkillClick,
+  onContactClick,
+}) => {
   const parentRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -33,10 +38,10 @@ const Navbar = ({ onAboutClick, onProjectClick, onSkillClick }) => {
       <div className="navbar-content">
         <div className="name">SID.</div>
         <div className="links">
+          <div onClick={onAboutClick}>ABOUT</div>
           <div onClick={onProjectClick}>PROJECTS</div>
           <div onClick={onSkillClick}>SKILLS</div>
-          <div onClick={onAboutClick}>ABOUT</div>
-          <div>CONTACT</div>
+          <div onClick={onContactClick}>CONTACT</div>
         </div>
       </div>
     </div>
