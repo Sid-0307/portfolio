@@ -41,18 +41,55 @@ const About = forwardRef((props, ref) => {
     "postman",
   ];
 
+  const [isPulsing, setIsPulsing] = useState(false);
+  const [showClickMessage, setShowClickMessage] = useState(false);
+  const [messagePosition, setMessagePosition] = useState({ x: 0, y: 0 });
+
+  const handleAestheticClick = () => {
+    setIsPulsing(true);
+    setTimeout(() => setIsPulsing(false), 1000);
+  };
+
+  const handleClickWorthy = (e) => {
+    alert("See made you click 😉");
+    const rect = e.target.getBoundingClientRect();
+    setMessagePosition({
+      x: rect.right + 30,
+      y: rect.top - 30,
+    });
+    setShowClickMessage(true);
+    setTimeout(() => setShowClickMessage(false), 2000);
+  };
   const [slugs, setSlugs] = useState(initialSlugs);
 
   return (
-    <div className="about">
+    <div className={`about ${isPulsing ? "pulse-animation" : ""}`}>
       <div className="box box1" ref={ref}>
         <p className="box1-text">
           I'm a web developer from Chennai with a knack for building{" "}
-          <span className="aesthetic">aesthetic</span> and{" "}
-          <span className="aesthetic">click-worthy</span> websites that combine
-          code with creative design. I love turning ideas into visually stunning
-          experiences.
+          <span className="aesthetic" onClick={handleAestheticClick}>
+            aesthetic
+          </span>{" "}
+          and{" "}
+          <span className="aesthetic" onClick={handleClickWorthy}>
+            click-worthy
+          </span>{" "}
+          websites that combine code with creative design. I love turning ideas
+          into visually stunning experiences.
         </p>
+
+        {/* {showClickMessage && (
+          <div
+            className="click-message"
+            style={{
+              position: "absolute",
+              left: `${messagePosition.x}px`,
+              top: `${messagePosition.y}px`,
+            }}
+          >
+            SEE IT MADE YOU CLICK!
+          </div>
+        )} */}
       </div>
 
       <div className="box box2 full">

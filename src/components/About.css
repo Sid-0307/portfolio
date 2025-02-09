@@ -109,14 +109,63 @@
 .aesthetic {
   display: inline-block;
   font-family: "Black Ops One", system-ui, Avenir, Helvetica, Arial, sans-serif;
-  /* animation: aestheticGlow 3s ease-in-out infinite; */
-  text-shadow: 0 0 15px white;
+  text-shadow: 1px 1px 5px white;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
   color: var(--dark-teal);
 }
 
-.aesthetic:hover {
-  animation-play-state: paused;
+@keyframes pagePulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.005);
+    filter: hue-rotate(120deg);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse-animation {
+  animation: pagePulse 1s ease-in-out;
+}
+
+@keyframes messagePopup {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* .click-message {
+  position: absolute;
+  color: var(--peach-puff);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  animation: messagePopup 2s ease-in-out forwards;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+} */
+
+.aesthetic {
   cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .box2 {
@@ -307,8 +356,9 @@
 .box5-text {
   margin: 0;
   padding: 0;
-  /* font-size: 4.7rem; */
-  font-size: clamp(2rem, 5vw, 4.7rem);
+  width: 100%;
+  text-align: center;
+  font-size: clamp(2rem, 4.7vw, 5vw);
 }
 
 @keyframes fadeIn {

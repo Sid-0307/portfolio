@@ -79,7 +79,7 @@ function App() {
           <Skill ref={skillRef} />
 
           <Contact ref={contactRef} />
-          <footer class="footer">
+          <footer className="footer">
             <p>Built by Sid ©️ 2025</p>
           </footer>
         </div>
