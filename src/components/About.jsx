@@ -164,7 +164,7 @@ const About = forwardRef((props, ref) => {
       </div>
       <div className="box box6">
         <a
-          href="https://drive.google.com/file/d/1SutHvv_03Q0D3SYYAU24-D3n1n9OYH3z/view?usp=drive_link"
+          href="https://drive.google.com/file/d/1ZDWjp8yc8JVjeqGcRPeSABcpggIkr7PA/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="box6-text"
