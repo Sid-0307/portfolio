@@ -1,41 +1,297 @@
-.skill {
+/* ============================================
+   SKILLS SECTION
+   ============================================ */
+
+.skills-section {
+  margin: 2rem 1rem;
+}
+
+.skills-container {
+  min-height: 80vh;
+  background-color: black;
+  padding: 2rem 1rem;
+  margin: 0;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* ============================================
+   PARTICLE ANIMATION
+   ============================================ */
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(221, 189, 160, 0.2);
+  pointer-events: none;
+  transition: all 0.3s ease-out;
+  z-index: 1;
+}
+
+/* ============================================
+   GRADIENT OVERLAY
+   ============================================ */
+
+.gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(221, 189, 160, 0.05),
+    transparent
+  );
+  pointer-events: none;
+  transition: background-position 0.3s ease-out;
+  z-index: 1;
+}
+
+/* ============================================
+   CONTENT
+   ============================================ */
+
+.skills-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.skills-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.skills-title {
+  font-size: clamp(2.2rem, 4.5vw, 2.8rem);
+  font-weight: 800;
+  margin: 0.5rem 0 2rem 0;
+  letter-spacing: 0.1em;
+  color: var(--peach-puff);
+  background: linear-gradient(135deg, var(--peach-puff) 0%, #ffd89b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ============================================
+   FILTER BUTTONS
+   ============================================ */
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background-color: rgba(2, 54, 54, 0.4);
+  color: var(--peach-puff);
+  border: 1px solid var(--peach-puff);
+}
+
+.filter-button:hover {
+  background-color: rgba(3, 68, 68, 0.6);
+  transform: scale(1.05);
+}
+
+.filter-button.active {
+  background-color: var(--peach-puff);
+  color: #023636;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.filter-button:active {
+  transform: scale(0.95);
+}
+
+.filter-count {
+  margin-left: 0.5rem;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+/* ============================================
+   SKILLS GRID
+   ============================================ */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+/* ============================================
+   SKILL ITEM ANIMATION
+   ============================================ */
+
+.skill-item {
+  opacity: 0;
+  animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ============================================
+   SKILL BADGE
+   ============================================ */
+
+.skill-badge {
+  backdrop-filter: blur(10px);
+  background-color: rgba(43, 42, 42, 0.3);
+  border-radius: 10px;
+  padding: 1.5rem;
+  transform: scale(1);
+  transition: all 0.5s ease;
+  border: 1px solid rgba(221, 189, 160, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  border-color: var(--peach-puff);
+  background-color: rgba(2, 54, 54, 0.5);
+}
+
+.skill-badge-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   SKILL HEADER
+   ============================================ */
+
+.skill-header {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.skill-name {
+  font-size: 1.1rem;
+  font-weight: 600;
   color: var(--peach-puff);
-  margin: 1rem 1rem 0rem 1rem;
-  padding: 1rem 1rem 0rem 1rem;
-  height: 90vh;
-  width: 97%;
-  border-radius: 10px;
-  z-index: 0;
-  background-image: linear-gradient(to right, #023636 1px, transparent 1px),
-    linear-gradient(to bottom, black 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: noiseMove 4s alternate infinite;
-  transform: perspective(10000px) rotateX(15deg) rotateY(-15deg);
-  transform-style: preserve-3d;
+  margin: 0;
+  letter-spacing: 0.02em;
 }
 
-.skills {
-  margin: 1rem;
+.skill-type-tag {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  border-radius: 20px;
+  background-color: rgba(2, 54, 54, 0.6);
+  color: var(--peach-puff);
+  border: 1px solid rgba(221, 189, 160, 0.2);
+  letter-spacing: 0.05em;
+  font-weight: 500;
 }
 
-.skills-text {
-  font-size: 5rem;
-  position: absolute;
-  color: #046f6f;
+/* ============================================
+   STAR RATING
+   ============================================ */
+
+.skill-stars {
+  display: flex;
+  gap: 0.25rem;
 }
 
-@keyframes noiseMove {
-  0% {
-    background-position: 0 0;
+.star {
+  font-size: 1rem;
+  color: var(--peach-puff);
+  transition: transform 0.2s ease;
+}
+
+.star.filled {
+  opacity: 1;
+}
+
+.star.half {
+  opacity: 0.5;
+}
+
+.star.empty {
+  opacity: 0.3;
+}
+
+.skill-badge:hover .star {
+  transform: scale(1.1);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   }
-  100% {
-    background-position: 0px 100px;
+}
+
+@media (max-width: 768px) {
+  .skills-container {
+    padding: 1.5rem 0.75rem;
+    margin: 0 0.5rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .filter-buttons {
+    gap: 0.75rem;
+  }
+
+  .filter-button {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.9rem;
   }
 }
 
-.skillset {
-  position: absolute;
+@media (max-width: 480px) {
+  .skills-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .skills-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .filter-button {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .skill-badge {
+    padding: 1.25rem;
+  }
 }

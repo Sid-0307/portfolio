@@ -2,45 +2,49 @@ import React, { useState, useRef, forwardRef, useEffect } from "react";
 import { Star } from "lucide-react";
 
 const Skills = forwardRef((props, ref) => {
-  const [activeFilter, setActiveFilter] = useState("language");
+  const [activeFilter, setActiveFilter] = useState("Languages");
   const containerRef = useRef(null);
 
   const skills = [
-    { name: "TypeScript", level: 4, type: "language" },
-    { name: "JavaScript", level: 4.5, type: "language" },
-    { name: "Java", level: 4, type: "language" },
-    { name: "React", level: 4.5, type: "framework" },
-    { name: "Android", level: 4, type: "tool" },
-    { name: "HTML5", level: 5, type: "language" },
-    { name: "CSS3", level: 4.5, type: "language" },
-    { name: "Node.js", level: 4.5, type: "runtime" },
-    { name: "Express", level: 4.5, type: "framework" },
-    { name: "AWS", level: 3, type: "tool" },
-    { name: "PostgreSQL", level: 3, type: "database" },
-    { name: "Firebase", level: 4, type: "tool" },
-    { name: "Nginx", level: 4, type: "tool" },
-    { name: "Vercel", level: 4.5, type: "tool" },
-    { name: "Docker", level: 3.5, type: "tool" },
-    { name: "Git", level: 5, type: "tool" },
-    { name: "Jira", level: 5, type: "tool" },
-    { name: "GitHub", level: 5, type: "tool" },
-    { name: "VSCode", level: 5, type: "tool" },
-    { name: "Android Studio", level: 4, type: "tool" },
-    { name: "Figma", level: 3, type: "tool" },
-    { name: "C", level: 4.5, type: "language" },
-    { name: "C++", level: 4.5, type: "language" },
-    { name: "Python", level: 4.5, type: "language" },
-    { name: "Angular", level: 4, type: "framework" },
-    { name: "Bootstrap", level: 5, type: "framework" },
-    { name: "FastAPI", level: 4, type: "framework" },
-    { name: "Flask", level: 3.5, type: "framework" },
-    { name: "NestJS", level: 4, type: "framework" },
-    { name: "Spring Boot", level: 4, type: "framework" },
-    { name: "TailwindCSS", level: 4.5, type: "framework" },
-    { name: "MongoDB", level: 5, type: "database" },
-    { name: "MySQL", level: 5, type: "database" },
-    { name: "Oracle", level: 5, type: "database" },
-    { name: "Postman", level: 5, type: "tool" },
+    // Languages
+    { name: "Java", level: 4.5, type: "Languages" },
+    { name: "Python", level: 4.5, type: "Languages" },
+    { name: "JavaScript", level: 4.5, type: "Languages" },
+    { name: "TypeScript", level: 4, type: "Languages" },
+    { name: "C", level: 4.5, type: "Languages" },
+    { name: "C++", level: 4.5, type: "Languages" },
+    { name: "HTML", level: 5, type: "Languages" },
+    { name: "CSS", level: 5, type: "Languages" },
+    { name: "Dart", level: 4, type: "Languages" },
+
+    // Databases
+    { name: "Oracle SQL", level: 5, type: "Databases" },
+    { name: "PostgreSQL", level: 4, type: "Databases" },
+    { name: "MySQL", level: 5, type: "Databases" },
+    { name: "MongoDB", level: 5, type: "Databases" },
+    { name: "Firebase", level: 4, type: "Databases" },
+
+    // Frameworks
+    { name: "Spring Boot", level: 4, type: "Frameworks" },
+    { name: "Node.js", level: 4.5, type: "Frameworks" },
+    { name: "ExpressJS", level: 4.5, type: "Frameworks" },
+    { name: "NestJS", level: 4, type: "Frameworks" },
+    { name: "FastAPI", level: 4, type: "Frameworks" },
+    { name: "Angular", level: 4, type: "Frameworks" },
+    { name: "React", level: 4.5, type: "Frameworks" },
+    { name: "Next.js", level: 4, type: "Frameworks" },
+    { name: "Flutter", level: 4, type: "Frameworks" },
+
+    // Tools
+    { name: "Git", level: 5, type: "Tools" },
+    { name: "Docker", level: 4, type: "Tools" },
+    { name: "AWS", level: 4, type: "Tools" },
+    { name: "Jenkins", level: 4, type: "Tools" },
+    { name: "Redis", level: 4, type: "Tools" },
+    { name: "Turborepo", level: 3, type: "Tools" },
+    { name: "Postman", level: 5, type: "Tools" },
+    { name: "JUnit", level: 5, type: "Tools" },
+    { name: "Jasmine/Karma", level: 5, type: "Tools" },
   ];
 
   useEffect(() => {
@@ -56,6 +60,7 @@ const Skills = forwardRef((props, ref) => {
       particle.style.height = `${size}px`;
       particle.style.left = `${Math.random() * 100}%`;
       particle.style.top = `${Math.random() * 100}%`;
+      particle.style.zIndex = "1";
 
       return particle;
     };
@@ -140,7 +145,7 @@ const Skills = forwardRef((props, ref) => {
         transform hover:scale-105 active:scale-95
       `}
     >
-      {type.charAt(0).toUpperCase() + type.slice(1)}
+      {type}
       <span className="ml-2 text-sm opacity-75">({count})</span>
     </button>
   );
@@ -183,7 +188,7 @@ const Skills = forwardRef((props, ref) => {
         transform transition-all duration-500 hover:scale-105
         hover:shadow-xl border border-[#ddbda0] border-opacity-20
         hover:border-opacity-100 hover:bg-[#023636]/50
-        relative overflow-hidden"
+        relative overflow-hidden z-10"
       >
         <div className="relative z-10">
           <div className="flex items-center justify-between mb-2">
@@ -205,33 +210,37 @@ const Skills = forwardRef((props, ref) => {
   );
 
   const counts = {
-    all: skills.length,
-    language: skills.filter((s) => s.type === "language").length,
-    framework: skills.filter((s) => s.type === "framework").length,
-    tool: skills.filter((s) => s.type === "tool").length,
+    Languages: skills.filter((s) => s.type === "Languages").length,
+    Databases: skills.filter((s) => s.type === "Databases").length,
+    Frameworks: skills.filter((s) => s.type === "Frameworks").length,
+    Tools: skills.filter((s) => s.type === "Tools").length,
   };
 
   return (
     <div ref={ref}>
       <div
         ref={containerRef}
-        className="min-h-screen bg-black p-8 m-4 rounded-lg relative overflow-hidden"
+        className=" bg-black p-8 m-4 rounded-lg relative overflow-hidden"
+        style={{ zIndex: 0 }}
       >
+        {/* Animated gradient background - increased z-index */}
         <div
-          className="absolute inset-0 bg-gradient-radial from-[#ddbda0]/5 to-transparent"
+          className="absolute inset-0 bg-gradient-radial from-[#ddbda0]/5 to-transparent pointer-events-none"
           style={{
-            backgroundPosition: "var(--mouse-x) var(--mouse-y)",
+            backgroundPosition: "var(--mouse-x, 50%) var(--mouse-y, 50%)",
             transition: "background-position 0.3s ease-out",
+            zIndex: 1,
           }}
         />
 
-        <div className="relative z-10 max-w-6xl mx-auto">
+        <div className="relative z-10 max-w-6xl mx-auto ">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-[#ddbda0] mb-4">Skills</h2>
-            <div className="flex justify-center space-x-4">
-              <FilterButton type="language" count={counts.language} />
-              <FilterButton type="framework" count={counts.framework} />
-              <FilterButton type="tool" count={counts.tool} />
+            <h1 className="text-4xl font-bold text-[#ddbda0] mb-8">SKILLS</h1>
+            <div className="flex justify-center space-x-4 flex-wrap gap-2">
+              <FilterButton type="Languages" count={counts.Languages} />
+              <FilterButton type="Databases" count={counts.Databases} />
+              <FilterButton type="Frameworks" count={counts.Frameworks} />
+              <FilterButton type="Tools" count={counts.Tools} />
             </div>
           </div>
 
@@ -241,7 +250,7 @@ const Skills = forwardRef((props, ref) => {
                 key={skill.name}
                 className="opacity-0 animate-fadeIn"
                 style={{
-                  animationDelay: `${index * 100}ms`,
+                  animationDelay: `${index * 50}ms`,
                   animationFillMode: "forwards",
                 }}
               >
@@ -271,13 +280,14 @@ const Skills = forwardRef((props, ref) => {
         .particle {
           transition: all 0.3s ease-out;
           pointer-events: none;
+          position: absolute;
         }
 
         .bg-gradient-radial {
           background: radial-gradient(
             600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-            var(--tw-gradient-from),
-            var(--tw-gradient-to)
+            rgba(221, 189, 160, 0.05),
+            transparent
           );
         }
       `}</style>
