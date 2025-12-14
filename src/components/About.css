@@ -526,7 +526,7 @@
   }
 }
 
-.role-title {
+.role-title-about {
   margin: 0;
   font-size: clamp(2rem, 3.5vw, 3.3rem);
   font-weight: 700;
@@ -757,7 +757,7 @@
     font-size: 2rem;
   }
 
-  .role-title {
+  .role-title-about {
     font-size: 1.8rem;
   }
 
@@ -785,7 +785,7 @@
     font-size: 1.8rem;
   }
 
-  .role-title {
+  .role-title-about {
     font-size: 1.5rem;
   }
 

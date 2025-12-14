@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import About from "./components/About";
+import Experience from "./components/Experience";
 import Project from "./components/Project";
 import Skill from "./components/Skill";
 import Contact from "./components/Contact";
@@ -15,9 +16,14 @@ function App() {
   const projectRef = useRef(null);
   const skillRef = useRef(null);
   const contactRef = useRef(null);
+  const experienceRef = useRef(null);
 
   const scrollToAbout = () => {
     aboutRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToExperience = () => {
+    experienceRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const scrollToSkill = () => {
@@ -41,7 +47,8 @@ function App() {
           onSkillClick={scrollToSkill}
           onContactClick={scrollToContact}
         />
-        <About ref={aboutRef} />
+        <About ref={aboutRef} experienceRef={experienceRef} />
+        <Experience ref={experienceRef} />
         <Project ref={projectRef} />
         <Skill ref={skillRef} />
         <Contact ref={contactRef} />
@@ -70,14 +77,15 @@ function App() {
         >
           <Navbar
             onAboutClick={scrollToAbout}
+            onExperienceClick={scrollToExperience}
             onProjectClick={scrollToProjects}
             onSkillClick={scrollToSkill}
             onContactClick={scrollToContact}
           />
-          <About ref={aboutRef} />
+          <About ref={aboutRef} experienceRef={experienceRef} />
+          <Experience ref={experienceRef} />
           <Project ref={projectRef} />
           <Skill ref={skillRef} />
-
           <Contact ref={contactRef} />
           <footer className="footer">
             <p>Built by Sid ©️ 2025</p>

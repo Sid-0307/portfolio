@@ -3,6 +3,7 @@ import "./Navbar.css";
 
 const Navbar = ({
   onAboutClick,
+  onExperienceClick,
   onProjectClick,
   onSkillClick,
   onContactClick,
@@ -39,6 +40,7 @@ const Navbar = ({
         <div className="name">SID.</div>
         <div className="links">
           <div onClick={onAboutClick}>ABOUT</div>
+          <div onClick={onExperienceClick}>EXPERIENCE</div>
           <div onClick={onProjectClick}>PROJECTS</div>
           <div onClick={onSkillClick}>SKILLS</div>
           <div onClick={onContactClick}>CONTACT</div>

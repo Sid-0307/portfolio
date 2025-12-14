@@ -100,24 +100,24 @@ const About = forwardRef(({ experienceRef }, ref) => {
 
   const experiences = [
     {
-      company: "citi",
+      company: "Citi",
       logo: citi,
       startDate: "2024-07-01",
       endDate: null,
       role: "Application Developer",
     },
     {
-      company: "spenza",
+      company: "Spenza",
       logo: spenza,
       startDate: "2024-02-01",
       endDate: "2024-07-01",
       role: "Full-Stack Developer Intern",
     },
     {
-      company: "citi",
+      company: "Citi",
       logo: citi,
-      startDate: "2023-06-01",
-      endDate: "2023-08-01",
+      startDate: "2023-05-01",
+      endDate: "2023-07-01",
       role: "SDE Intern",
     },
   ];
@@ -287,10 +287,8 @@ const About = forwardRef(({ experienceRef }, ref) => {
               <div className="exp-content">
                 <div className="exp-role">{exp.role}</div>
                 <div className="exp-meta">
-                  <span className="exp-duration">
-                    {calculateDuration(exp.startDate, exp.endDate)}
-                  </span>
-                  <span className="exp-separator"> •</span>
+                  <span className="exp-duration">{exp.company}</span>
+                  <span className="exp-separator"> ✦ </span>
                   <span className="exp-timeline">
                     {formatDate(exp.startDate)} -{" "}
                     {exp.endDate ? formatDate(exp.endDate) : "PRESENT"}
@@ -313,7 +311,7 @@ const About = forwardRef(({ experienceRef }, ref) => {
 
       {/* Role Title */}
       <div className="box title-box">
-        <p className="role-title">SDE · Backend · Full Stack</p>
+        <p className="role-title-about">SDE ✦ Backend ✦ Full Stack</p>
       </div>
 
       {/* Socials Card */}
