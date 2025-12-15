@@ -60,10 +60,10 @@ const Contact = forwardRef((props, ref) => {
       };
 
       await emailjs.send(
-        "service_qx3rz0b",
-        "template_71yh0oj",
+        import.meta.env.EMAILJS_SERVICE_ID,
+        import.meta.env.EMAILJS_TEMPLATE_ID,
         templateParams,
-        "z4hfPLz1tJW9hhcnx"
+        import.meta.env.EMAILJS_PUBLIC_KEY
       );
 
       setStatus("success");
