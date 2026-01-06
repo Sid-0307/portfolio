@@ -104,7 +104,7 @@ const About = forwardRef(({ experienceRef }, ref) => {
       logo: citi,
       startDate: "2024-07-01",
       endDate: null,
-      role: "Application Developer",
+      role: "Software Engineer",
     },
     {
       company: "Spenza",
