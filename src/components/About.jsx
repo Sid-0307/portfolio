@@ -350,7 +350,7 @@ const About = forwardRef(({ experienceRef }, ref) => {
       {/* Resume Card */}
       <div className="box resume-box">
         <a
-          href="https://drive.google.com/file/d/1RpfJog0NCMsaGR86S_OjYRZ0a3wS_Hso/view?usp=sharing"
+          href="https://drive.google.com/file/d/1hoNbkjWKND34ejBupuSrN62-vtKrE0F6/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="resume-btn"
