@@ -9,7 +9,7 @@ const Experience = forwardRef((props, ref) => {
       id: 1,
       company: "Citi",
       logo: citi,
-      role: "Application Developer",
+      role: "Software Engineer",
       startDate: "2024-07-01",
       endDate: null,
       highlights: [
